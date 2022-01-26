@@ -1,1 +1,17 @@
-@charset "EUC-KR";
+@charset "UTF-8";
+
+#wrap{
+	
+	width:1200px;
+	margin:auto;
+}
+
+
+.content>.join-box{
+	width:600px;
+	
+}
+footer{
+	height:50px;
+	
+}
