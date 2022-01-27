@@ -16,14 +16,14 @@
 <body>
 
 <div id="wrap">
-
+	<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 	<header>
 		
 	</header>
 	<section>
 	
 	</section>
-	<c:import url="/WEB-INF/jsp/include/footer"/>
+	<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 
 
 </div>
