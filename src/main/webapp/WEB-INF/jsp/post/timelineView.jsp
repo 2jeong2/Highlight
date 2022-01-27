@@ -11,17 +11,28 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+<link rel="stylesheet" href="/static/css/style.css" type="text/css">
 <title>타임라인</title>
 </head>
 <body>
 
 <div id="wrap">
-	<c:import url="/WEB-INF/jsp/include/header.jsp"/>
-	<header>
-		
-	</header>
-	<section>
+
 	
+	<c:import url="/WEB-INF/jsp/include/header.jsp"/>
+	
+	<section class="content justify-content-center my-5">
+		<div class=" justify-content-center">
+			<div class="textarea ">
+				<textarea class="form-control" rows="5">내용을 입력해주세요
+				
+				</textarea>
+				<button type="button" class="btn btn-info text-white">업로드</button>
+			</div>
+			<div class="post-box">
+				dd
+			</div>
+		</div>
 	</section>
 	<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 

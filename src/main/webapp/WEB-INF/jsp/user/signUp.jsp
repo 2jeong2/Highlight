@@ -11,20 +11,18 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+<link rel="stylesheet" href="/static/css/style.css" type="text/css">
 <title>회원가입 화면</title>
 </head>
 <body>
 <div id="wrap">
-
-	<header class="bg-info">
-	
-	</header>
-	
-	<section class="content  d-flex justify-content-center">
-		<div class="join-box my-5">
+	<c:import url="/WEB-INF/jsp/include/header.jsp"/>
+	<form id="signupForm">
+		<section class="content  d-flex justify-content-center my-5">
+			<div class="join-bigBox d-flex justify-content-center">
 			
-			 	<h2 class="text-center">Highlight.</h2>
-				<form id="signupForm">
+				<div class="join-box my-5">
+					
 					<label>전화번호</label><input type="text" class="form-control" placeholder="전화번호" id="phoneNumberInput">
 					<label>아이디</label><input type="text" class="form-control" placeholder="아이디" id="loginIdInput">
 					<label>이름</label><input type="text" class="form-control" placeholder="이름 " id="nameInput">
@@ -32,10 +30,11 @@
 					<label>비밀번호 확인</label><input type="password" class="form-control" placeholder="비밀번호 확인" id="passwordConfirmInput">
 					<label>이메일</label><input type="text" class="form-control" placeholder="이메일 주소" id="emailInput">
 					<button type="submit"  class="btn btn-secdondary btn-block mt-3">가입하기</button> 
-				</form>
-			
-		</div>
-	</section>
+					
+				</div>
+			</div>
+		</section>
+	</form>
 	<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 
 

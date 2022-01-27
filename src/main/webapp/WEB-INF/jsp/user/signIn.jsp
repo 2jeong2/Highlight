@@ -11,37 +11,44 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+<link rel="stylesheet" href="/static/css/style.css" type="text/css">
 <title>로그인</title>
 </head>
 <body>
 
 <div id ="wrap">
 
-	
+	<!-- <section>
+		<image width="300" src="https://cdn.pixabay.com/photo/2016/11/21/17/44/arches-national-park-1846759_960_720.jpg" >
+	</section> -->
 <form id="loginForm">
-	<section class=" d-flex justify-content-center">
-		<div class="login-box">
-			<div class="display-4 my-5">Highlight.</div> 
-			<input type="text" class="form-control" placeholder="아이디" id="loginIdInput">
-			<input type="password" class="form-control" placeholder="비밀번호" id="passwordInput">
-			<button type="submit"  class="btn btn-info btn-block mt-3">로그인</button> 
-			
-			<div>facebook으로 로그인</div>
-			<div>비밀번호를 잊으셨나요?</div>
-			
-			
+	
+	<section class="d-flex justify-content-center">
+		<div class="login-bigbox d-flex justify-content-center my-5">
+		
+			<div class="login-box my-5">
+				<div class="display-4 my-5">Highlight.</div> 
+				<input type="text" class="form-control" placeholder="아이디" id="loginIdInput">
+				<input type="password" class="form-control mt-1" placeholder="비밀번호" id="passwordInput">
+				<button type="submit"  class="btn btn-info btn-block my-4">로그인</button> 
+				
+				<div class="text-center my-5">
+					<div class="my-2">비밀번호를 잊으셨나요?</div>
+					<div>계정이 없으신가요?<a href="/user/signup_view">가입하기</a></div>
+					
+				</div>
+				
+			</div>
 		</div>
 		
 	
 	
 	</section>
-</form>
-	<section class="join">
-		<div class="text-center">
-			<div>계정이 없으신가요?<a href="/user/signup_view">가입하기</a></div>
-		</div>
+		
 	
-	</section>
+	
+	
+</form>
 	
 	<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 
@@ -71,7 +78,7 @@
 				data:{"loginId":loginId,"password":password},
 				success:function(data){
 					if(data.result == "success"){
-						location.href="/post/list_view";
+						location.href="/post/timeline_view";
 					}else{
 						alert("아이디/비밀번호를 확인해 주세요");
 					}
