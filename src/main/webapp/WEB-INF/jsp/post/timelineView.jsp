@@ -23,14 +23,15 @@
 	
 	<section class="content justify-content-center my-5">
 		<div class=" justify-content-center">
-			<div class="textarea ">
-				<textarea class="form-control" rows="5">내용을 입력해주세요
-				
-				</textarea>
-				<button type="button" class="btn btn-info text-white">업로드</button>
+			
+			<div class="textarea  ">
+				<textarea class="form-control" rows="5" id="contentInput">내용을 입력해주세요</textarea>
+				<input type="file" class="mt-3" id="fileInput">
+				<button type="button" class="btn btn-info text-white" id="saveInput">업로드</button>
 			</div>
+			
 			<div class="post-box">
-				dd
+				
 			</div>
 		</div>
 	</section>
@@ -38,6 +39,38 @@
 
 
 </div>
+<script>
+	$(document).ready(function(){
+		
+	})$("#saveInput").on("click",function(){
+	
+		let content = $("#contentInput").val().trim();
+		
+		
+		
+		if(content == ""){
+			alert("내용을 입력해주세요");
+			return;
+		}
+		
+		var formData = new FormData();
+		formData.append("subject",title);
+		formData.append("content",content);
+		formData.append("file",$("#fileInput")[0].files[0]);
+		
+		$.ajax({
+			type:"post",
+			url:"/post/timeline",
+			data:formData,
+			
+		})
+		
+		
+		
+	})
+	
+
+</script>
 
 </body>
 </html>
