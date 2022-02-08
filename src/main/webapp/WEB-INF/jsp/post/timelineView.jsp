@@ -17,23 +17,23 @@
 <body>
 
 <div id="wrap">
-
 	
 	<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 	
-	<section class="content justify-content-center my-5">
-		<div class=" justify-content-center">
-			
-			<div class="textarea  ">
+	
+	
+	<section class="content d-flex justify-content-center my-5">
+
+			<div class="upload-box ">
 				<textarea class="form-control" rows="5" id="contentInput">내용을 입력해주세요</textarea>
-				<input type="file" class="mt-3" id="fileInput">
-				<button type="button" class="btn btn-info text-white" id="saveInput">업로드</button>
+				<div class="justify-content-between">
+					<input type="file" class="mt-3" id="fileInput">
+					<button type="button" class="btn btn-info text-white" id="saveBtn">업로드</button>
+				</div>
+				<div class="justify-content-end">
+				</div>
 			</div>
-			
-			<div class="post-box">
-				
-			</div>
-		</div>
+		
 	</section>
 	<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 
@@ -42,7 +42,7 @@
 <script>
 	$(document).ready(function(){
 		
-	})$("#saveInput").on("click",function(){
+	})$("#saveBtn").on("click",function(){
 	
 		let content = $("#contentInput").val().trim();
 		
@@ -62,6 +62,18 @@
 			type:"post",
 			url:"/post/timeline",
 			data:formData,
+			encType:"multipart/form-data",
+			processData:false,
+			contentType:false,
+			success:function(data){
+				if(data.result == "success"){
+					location.href="/post/timeline_view";
+				}else{
+					alert("글쓰기 실패");
+				}
+			},error:function(){
+				alert("에러발생")
+			}
 			
 		})
 		

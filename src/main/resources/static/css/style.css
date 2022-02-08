@@ -3,20 +3,10 @@ body{
 	background-color:#F5F5F5;
 }
 #wrap{
-	
-	width:1200px;
 	margin:auto;
-	
 }
 header{
 	background-color:white;
-}
-
-.textarea{
-	width:700px;
-}
-.post-box{
-	width:700px;
 }
 .content>.join-bigBox{
 	width:500px;
@@ -29,9 +19,6 @@ header{
 }
 .content>.join-box{
 	width:400px;
-	
-	
-	
 }
 .login-bigbox{
 	width:500px;
@@ -41,9 +28,6 @@ header{
 	border-radius:10px/10px;
 	
 }
-
-footer{
-	height:50px;
-	
-	
+.timeline-bar{
+	background-color:#FFFFFF;
 }
