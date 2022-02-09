@@ -18,6 +18,7 @@
 
 <div id="wrap">
 		뒤로가기 아이콘
+	<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 	<header class="d-flex justify-content-center align-items-center ">
 		<h4 class="justify-content-between"><b>새 게시물</b></h4>
 		
@@ -56,6 +57,7 @@
 			//
 			var formData = new FormData();
 		
+			formData.append("userName",userName);
 			formData.append("content",content);
 			formData.append("file",$("#fileInput")[0].files[0]);
 			

@@ -25,14 +25,15 @@ public class PostRestController {
 	@PostMapping("/create")		
 	public  Map<String,String> create(		
 			@RequestParam("content")String content,
-			@RequestParam("userName")String userName,
+			
 			@RequestParam(value="fail",required=false)MultipartFile file,
 			HttpServletRequest request){
 			
 		HttpSession session = request.getSession();	
 			
 			
-		int userId = (Integer)session.getAttribute("userId");	
+		int userId = (Integer)session.getAttribute("userId");
+		String userName = (String)session.getAttribute("userName");
 			
 		int count = postBO.addPost(userId, content,userName, file);	
 			
@@ -40,10 +41,14 @@ public class PostRestController {
 			
 		if(count == 1) {	
 			result.put("result", "success");
+			
 		}else {	
 			result.put("result", "fail");
-		}return result;	
+		}
+		return result;	
 			
-	}		
+	}	
+	
+	
 	
 }

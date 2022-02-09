@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,14 +25,24 @@
 	
 	<section class="content d-flex justify-content-center my-5">
 
-			<div class="upload-box ">
-				<textarea class="form-control" rows="5" id="contentInput">내용을 입력해주세요</textarea>
-				<div class="justify-content-between">
+			<div class="border rounded upload-box ">
+				<div>
+					<textarea class="form-control" rows="5" id="contentInput">내용을 입력해주세요</textarea>
+				</div>
+				<div class="d-flex justify-content-between">
 					<input type="file" class="mt-3" id="fileInput">
-					<button type="button" class="btn btn-info text-white" id="saveBtn">업로드</button>
+					<a href="#" id="imageUploadBtn"><i class="bi bi-image image-upload-icon"></i></a>
+					<button type="button" class="btn btn-sm btn-info text-white" id="saveBtn">업로드</button>
 				</div>
 				<div class="justify-content-end">
 				</div>
+			</div>
+			
+			<div>
+				${post.id}
+				${post.content }
+			
+			
 			</div>
 		
 	</section>
@@ -41,6 +52,9 @@
 </div>
 <script>
 	$(document).ready(function(){
+		$("#imageUploadBtn").on("click",function(){
+			$("#fileInput").click();
+		});
 		
 	})$("#saveBtn").on("click",function(){
 	
@@ -48,13 +62,17 @@
 		
 		
 		
-		if(content == ""){
+		if(content == "" || content == null){
 			alert("내용을 입력해주세요");
+			return;
+		}
+		if($("#fileInput")[0].files.length == 0){
+			alert("파일을 추가하세요");
 			return;
 		}
 		
 		var formData = new FormData();
-		formData.append("subject",title);
+		
 		formData.append("content",content);
 		formData.append("file",$("#fileInput")[0].files[0]);
 		
@@ -75,11 +93,11 @@
 				alert("에러발생")
 			}
 			
-		})
+		});
 		
 		
 		
-	})
+	});
 	
 
 </script>

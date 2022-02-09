@@ -9,7 +9,7 @@
 		INSERT INTO `post`	
 		(	
 		`userId`,	
-		`userName`,	
+		`userName`,
 		`content`,	
 		`imagePath`,	
 		`createdAt`,	
@@ -18,7 +18,7 @@
 			
 		)VALUES(	
 		#{userId},	
-		#{userName},	
+		#{userName},
 		#{content},	
 		#{imagePath},	
 		now(),	
@@ -28,7 +28,24 @@
 			
 			
 			
-	</insert>		
+	</insert>	
+	<select id="getPostList" resultType="com.jcm.highlight.user.model.User" parameterType="map">
+		SELECT 
+			`id`,
+			`userId`,
+			`userName`,
+			`content`,
+			`imagePath`,
+			`createdAt`,
+			`updatedAt`
+		FROM
+			`post`
+		WHERE
+			`userId` = #{userId}
+		ORDER BY
+			`id` DESC
+	
+	</select>	
 			
 			
 </mapper>			

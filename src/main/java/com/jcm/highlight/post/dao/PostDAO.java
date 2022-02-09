@@ -1,7 +1,11 @@
 package com.jcm.highlight.post.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import com.jcm.highlight.post.model.Post;
 
 @Repository
 public interface PostDAO {
@@ -12,5 +16,7 @@ public interface PostDAO {
 			@Param("userName")String userName,
 			@Param("imagePath")String imagePath);
 			
+	public List<Post> selectPostList();
+	
 	
 }
