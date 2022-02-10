@@ -6,35 +6,85 @@ body{
 #wrap{
 	margin:auto;
 }
-
+/* header */
 header{
 	background-color:white;
 	border-color:#000000;
 	border-bottom-width:5px;
 }
+.logo{
+	width:150px;
+	
+	background-color:#D8D8D8;
+}
+.search{
+	width:450px;
+	background-color:#c0c0c0;
+}
+.nav{
+	width:300px;
+	background-color:#c0c0c0;
+}
+/* signup */
 .content>.join-bigBox{
 	width:500px;
 	height:600px;
 	background-color:white;
 	border:1px;
 	border-radius:10px/10px;
-	
-	
 }
 .content>.join-box{
 	width:400px;
 }
+/* signin */
 .login-bigbox{
 	width:350px;
 	
 	background-color:white;
 	border-style:solid;
-	border-color:#c0c0c0;
+	border-color:#D8D8D8;
 	border-width:1px;
 	/* border-radius:10px/10px; */
 	margin:auto;
 	
 }
+/* timline */
+.nav{
+	font-size:18px;
+}
+.post-header{
+	width:499px;
+	height:38px;
+	background-color:#D8D8D8;
+}
+.item-box{
+	width:499px;
+	height:38px;
+	background-color:#D8D8D8;
+}
+.commentInput-box{
+	width:499px;
+	height:40px;
+	background-color:#D8D8D8;
+}
 .timeline-bar{
 	background-color:#FFFFFF;
+	border-bottom-style:solid;
+	border-width:1px;
+	border-color:#D8D8D8;
+}
+.upload-box{
+	background-color:white;
+	width:500px;
+}
+.post-box{
+	background-color:#FFFFFF;
+	border-style:solid;
+	border-width:1px;
+	border-color:#D8D8D8;
+	width:500px;
+}
+.img-icon{
+	font-size:25px;
+	
 }

@@ -25,11 +25,12 @@ public class PostRestController {
 	@PostMapping("/timeline")		
 	public  Map<String,String> timeline(		
 			@RequestParam("content")String content,
-			@RequestParam(value="fail",required=false)MultipartFile file,
+			@RequestParam("file")MultipartFile file,
 			HttpServletRequest request){
 			
 		HttpSession session = request.getSession();	
 		int userId = (Integer)session.getAttribute("userId");
+		//가져올 때 Object롤 가져오기때문에(integer)를 붙여줘야함
 		String userName = (String)session.getAttribute("userName");
 			
 		int count = postBO.addPost(userId, content,userName, file);	
