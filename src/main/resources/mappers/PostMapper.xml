@@ -16,7 +16,8 @@
 		`updatedAt`	
 			
 			
-		)VALUES(	
+		)
+		VALUES(	
 		#{userId},	
 		#{userName},
 		#{content},	

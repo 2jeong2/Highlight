@@ -22,16 +22,13 @@ public class PostRestController {
 	@Autowired			
 	private PostBO postBO;		
 			
-	@PostMapping("/create")		
-	public  Map<String,String> create(		
+	@PostMapping("/timeline")		
+	public  Map<String,String> timeline(		
 			@RequestParam("content")String content,
-			
 			@RequestParam(value="fail",required=false)MultipartFile file,
 			HttpServletRequest request){
 			
 		HttpSession session = request.getSession();	
-			
-			
 		int userId = (Integer)session.getAttribute("userId");
 		String userName = (String)session.getAttribute("userName");
 			

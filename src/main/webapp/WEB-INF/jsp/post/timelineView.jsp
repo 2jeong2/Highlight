@@ -30,18 +30,15 @@
 					<textarea class="form-control" rows="5" id="contentInput">내용을 입력해주세요</textarea>
 				</div>
 				<div class="d-flex justify-content-between">
+					<a href="#" id="imageUploadBtn"></a>
 					<input type="file" class="mt-3" id="fileInput">
-					<a href="#" id="imageUploadBtn"><i class="bi bi-image image-upload-icon"></i></a>
 					<button type="button" class="btn btn-sm btn-info text-white" id="saveBtn">업로드</button>
 				</div>
-				<div class="justify-content-end">
-				</div>
+				
 			</div>
 			
 			<div>
-				${post.id}
-				${post.content }
-			
+				
 			
 			</div>
 		
@@ -52,49 +49,52 @@
 </div>
 <script>
 	$(document).ready(function(){
-		$("#imageUploadBtn").on("click",function(){
+		
+		$("#imageUploadBtn").on("click", function() {
 			$("#fileInput").click();
 		});
 		
-	})$("#saveBtn").on("click",function(){
-	
-		let content = $("#contentInput").val().trim();
+		$("#saveBtn").on("click",function(){
 		
-		
-		
-		if(content == "" || content == null){
-			alert("내용을 입력해주세요");
-			return;
-		}
-		if($("#fileInput")[0].files.length == 0){
-			alert("파일을 추가하세요");
-			return;
-		}
-		
-		var formData = new FormData();
-		
-		formData.append("content",content);
-		formData.append("file",$("#fileInput")[0].files[0]);
-		
-		$.ajax({
-			type:"post",
-			url:"/post/timeline",
-			data:formData,
-			encType:"multipart/form-data",
-			processData:false,
-			contentType:false,
-			success:function(data){
-				if(data.result == "success"){
-					location.href="/post/timeline_view";
-				}else{
-					alert("글쓰기 실패");
-				}
-			},error:function(){
-				alert("에러발생")
+			
+			let content = $("#contentInput").val().trim();
+			
+			
+			if(content == ""){
+				alert("내용을 입력해주세요");
+				return;
+			}
+			if($("#fileInput")[0].files.length == 0){
+				alert("사진을 업로드해주세요");
+				return;
 			}
 			
+			var formData = new FormData();
+			formData.append("content",content);
+			formData.append("file",$("#fileInput")[0].files[0]);
+			
+			$.ajax({
+				type:"post",
+				url:"/post/timeline",
+				data:formData,
+				encType:"multipart/form-data",
+				processData:false,
+				contentType:false,
+				success:function(data){
+					if(data.result == "success"){
+						location.href="/post/timeline_view";
+					}else{
+						alert("글쓰기 실패");
+					}
+				},error:function(){
+					alert("에러발생");
+				}
+				
+			});
+			
+			
+			
 		});
-		
 		
 		
 	});

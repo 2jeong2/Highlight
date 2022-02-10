@@ -23,31 +23,33 @@
 	</section> -->
 <form id="loginForm">
 	
-	<section class="d-flex justify-content-center">
-		<div class="login-bigbox d-flex justify-content-center my-5">
+	<section class=" my-5">
+	
+		<div class="login-bigbox my-5">
 		
-			<div class="login-box my-5">
-				<div class="display-4 my-5">Highlight.</div> 
-				<input type="text" class="form-control" placeholder="아이디" id="loginIdInput">
-				<input type="password" class="form-control mt-1" placeholder="비밀번호" id="passwordInput">
-				<button type="submit"  class="btn btn-info btn-block my-4">로그인</button> 
+					<h1 class="my-3 text-center">Highlight.</h1> 
+			<!-- 로그인 박스 -->
+			<div class="login-box d-flex justify-content-center">
+				<!-- logo,login -->
+				<div class="my-4 ">
+					<input type="text" class="form-control" placeholder="아이디" id="loginIdInput">
+					<input type="password" class="form-control mt-1" placeholder="비밀번호" id="passwordInput">
+					<button type="submit"  class="btn btn-info btn-block my-4">로그인</button> 
+					<div class="my-2">비밀번호를 잊으셨나요?</div>
+				</div> 
+				
 				
 				<div class="text-center my-5">
-					<div class="my-2">비밀번호를 잊으셨나요?</div>
-					<div>계정이 없으신가요?<a href="/user/signup_view">가입하기</a></div>
-					
 				</div>
 				
 			</div>
 		</div>
+				<div class="login-bigbox d-flex justify-content-center ">
+					<div class="my-4">계정이 없으신가요?<a href="/user/signup_view">가입하기</a></div>
+				</div>
 		
-	
-	
 	</section>
 		
-	
-	
-	
 </form>
 	
 	<c:import url="/WEB-INF/jsp/include/footer.jsp"/>

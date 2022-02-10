@@ -17,9 +17,12 @@
 </head>
 <body>
 <header class="">
-	<div class="timeline-bar d-flex justify-content-between">
-		<h1 class="d-flex  ml-3">Highlight.</h1>
-		<div class="">
+	<div class="timeline-bar d-flex justify-content-between align-items-center">
+		<h2 class="d-flex  ml-3"><b>Highlight.</b></h2>
+		
+		
+		<!-- 로그인을 하지 않았을 때 사라져야하는 항목 -->
+		<div class="d-flex align-items-center">
 			<ul class="nav nav-fill ">
 				<li class="nav-item"><a href="#" class="nav-link text-dark">홈아이콘</a></li>
 				<li class="nav-item"><a href="#" class="nav-link text-dark">검색아이콘</a></li>
@@ -27,6 +30,12 @@
 				<li class="nav-item"><a href="#" class="nav-link text-dark">알림아이콘 ❤</a></li>
 				<li class="nav-item"><a href="#" class="nav-link text-dark">내게시물아이콘</a></li>
 			</ul>
+		</div>
+		<!-- 로그인을 했을 때 사라져야할 항목 -->
+		<div class="d-flex ">
+			<a href="/user/signin_view" type="button" class="form-control btn btn-info" >로그인</a>
+			<a href="/user/signup_view" type="button" class="form-control btn btn-white" >회원가입</a>
+
 		</div>
 		
 	</div>

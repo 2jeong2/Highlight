@@ -1,10 +1,12 @@
 @charset "UTF-8";
+
 body{
 	background-color:#F5F5F5;
 }
 #wrap{
 	margin:auto;
 }
+
 header{
 	background-color:white;
 	border-color:#000000;
@@ -23,11 +25,14 @@ header{
 	width:400px;
 }
 .login-bigbox{
-	width:500px;
-	height:600px;
+	width:350px;
+	
 	background-color:white;
-	border:1px;
-	border-radius:10px/10px;
+	border-style:solid;
+	border-color:#c0c0c0;
+	border-width:1px;
+	/* border-radius:10px/10px; */
+	margin:auto;
 	
 }
 .timeline-bar{

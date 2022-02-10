@@ -17,27 +17,27 @@ import com.jcm.highlight.post.model.PostDetail;
 @Service
 public class PostBO {
 
-	
-	@Autowired			
-	private PostDAO postDAO;	
+	@Autowired
+	private PostDAO postDAO;
 	private CommentBO commentBO;
-			
-	public int addPost(int userId, String content,String userName, MultipartFile file) {		
-			
-		String filePath = FileManagerService.saveFile(userId, file);	
-			
-		return postDAO.insertPost(userId, content,userName, filePath);	
-	}	
+
+	public int addPost(int userId, String content, String userName, MultipartFile file) {
+
+		String filePath = FileManagerService.saveFile(userId, file);
+
+		return postDAO.insertPost(userId, content, userName, filePath);
+	}
+
 	
-	/*
-	 * public List<Post> getPostList(int userId){
-	 * 
-	 * List<Post> postList = postDAO.selectPostList();
-	 * 
-	 * List<PostDetail> postDetailList = new ArrayList<>();
-	 * 
-	 * 
-	 * 
-	 * return postDetailList; }
-	 */
+	/*public List<Post> getPostList(int userId){
+	 
+	List<Post> postList = postDAO.selectPostList();
+	List<PostDetail> postDetailList = new ArrayList<>();
+	
+	
+	
+	
+	return postDetailList; 
+	}*/
+	 
 }
