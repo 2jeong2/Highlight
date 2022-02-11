@@ -7,8 +7,13 @@ import org.springframework.stereotype.Repository;
 public interface CommentDAO {
 
 	public int insertComment(
-			@Param("userId")int userId,
 			@Param("postId")int postId,
+			@Param("userId")int userId,
 			@Param("userName")String userName,
+			@Param("content")String content);
+	
+	
+	public String getComment(
+			@Param("postId")int postId,
 			@Param("content")String content);
 }

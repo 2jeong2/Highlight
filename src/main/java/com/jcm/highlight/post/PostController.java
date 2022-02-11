@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jcm.highlight.post.bo.PostBO;
-import com.jcm.highlight.post.model.PostDetail;
+import com.jcm.highlight.post.model.Post;
 
 @Controller
 
@@ -30,11 +30,9 @@ public class PostController {
 		int userId = (Integer)session.getAttribute("userId");
 		
 		
-		/*
-		 * List<PostDetail> postList = postBO.getPostList(userId);
-		 * model.addAttribute("postList",postList);
-		 */
-		 
+		List<Post> postList = postBO.getPostList(userId);
+		model.addAttribute("postList",postList);
+		
 		
 		return "post/timelineView";
 	}
@@ -44,6 +42,7 @@ public class PostController {
 		return "post/createView";
 	}
 	
+	//jsp로 전달할 수 있는 controller에서만 model사용가능(jstl을 사용하기 위해)
 	
 	
 	

@@ -24,9 +24,10 @@
 	
 	
 	
-	<section class="content flex-column justify-content-center my-2 ">
+	<section class="  ">
 
-			<!-- 업로드 박스 -->
+		<!-- 업로드 박스 -->
+		<article  class="d-flex justify-content-center my-4">
 			<div class="border upload-box ">
 				<div class="">
 				
@@ -36,10 +37,10 @@
 						<i class="bi bi-three-dots col-1"></i>
 					</div>
 					
-					<textarea class="form-control my-3" rows="5" id="contentInput">내용을 입력해주세요</textarea>
+					<textarea class="textarea form-control my-3" rows="4" id="contentInput">내용을 입력해주세요</textarea>
 					
 					<!-- button -->
-					<div class="d-flex justify-content-between my-1 ">
+					<div class="d-flex justify-content-between p-2 ">
 						
 						<span class="img-icon"><i class="bi bi-images" id="imgBtn"></i></span>
 						<input type="file" class="mt-3 d-none" id="fileInput">
@@ -49,54 +50,70 @@
 				</div>
 				
 			</div>
-			<!-- 업로드한 게시물 -->
-			
-			<div class="post-box my-3  ">
-			
-				<!-- post-header -->
-				<div class="post-header d-flex align-items-center ">
-					<div class="col-11"><a href="#" class="text-dark">${userName}</a></div>
-					<i class="bi bi-three-dots col-1"></i>
-				</div>
+		</article >
+		
+		
+		
+		<!-- 업로드한 게시물 -->
+		<c:forEach var="post" items="${postList}">
+			<article class=" d-flex justify-content-center my-3">
+					<div class="post-box  ">
 				
-				<img src="${imagePath }" width="499" height="500">
-				
-				<div class="item-box d-flex align-items-center justify-content-between">
-					<div class="d-flex">
-						<!-- 좋아요,댓글 -->
-						<div class="like"><i class="bi bi-heart ml-2"></i></div>
-						<div class="comment"><i class="bi bi-chat ml-2"></i></div>
-					</div>
-						<!-- bookmark -->
-						<div class="bookmark justify-content-end mr-3"><i class="bi bi-bookmark"></i></div>
-					
-				</div>
-				
-				<div class="comment-box">
-						<!-- 게시된 comment -->
-						<div class="comment">
-							<div>1</div>
-							<div>1</div>
-							<div>1</div>
-							<div>1</div>
+						<!-- post-header -->
+						<div class="post-header d-flex align-items-center ">
+							<div class="col-11"><a href="#" class="text-dark">${post.userName }</a></div>
+							<i class="bi bi-three-dots col-1"></i>
 						</div>
 						
-						<!-- comment 입력-->
-						<div class="commentInput-box d-flex">
-							<input type="text" class="form-control">
-							<button type="button" class="btn ">게시</button>
+						<img src="${post.imagePath }" width="497" height="500">
+						
+						<div class="item-box d-flex align-items-center justify-content-between">
+							<div class="d-flex">
+								<!-- 좋아요,댓글 -->
+								<div class="like"><i class="bi bi-heart ml-2"> 좋아요</i></div>
+							</div>
+								<!-- bookmark -->
+								<div class="bookmark justify-content-end mr-3"><i class="bi bi-bookmark"></i></div>
+							
+							</div>
+							<div class="p-2">
+								<div class="post-content">${post.userName } ${post.content }</div>
+							</div>
+						<div class="comment-box p-2">
+								<div class="comment"><i class="bi bi-chat"></i></div>
+								<!-- 게시된 comment -->
+								<div class="comment my-2">
+									<div>1</div>
+									<div>1</div>
+									<div>1</div>
+									<div>1</div>
+								</div>
+								
+								<!-- 댓글 입력-->
+								<div class="commentInput-box d-flex">
+									<input type="text" class="form-control" id="commentInput${post.id}">
+									<button type="button" class="commentBtn btn" data-post-id="${post.id }">게시</button><!-- data-post-id 여기 대문자 숫자x-->
+								</div>
 						</div>
-				</div>
+					</div>
+			</article>
+		</c:forEach>
+		
+				
+					
+	</section>
+				
+				
 				
 			
-			</div>
+			
 		
-	</section>
+	
 	
 	<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 
-
 </div>
+
 <script>
 	$(document).ready(function(){
 		//alert("");
@@ -104,6 +121,33 @@
 			//fileInput 클릭 효과
 			$("#fileInput").click();
 		}); 
+		
+		$(".commentBtn").on("click",function(){
+			
+			let postId = $(this).data("post-id");
+			let content = $("#commentInput"+postId).val();
+			
+			
+			if(content == ""){
+				alert("댓글을 입력해주세요");
+				return;
+			}
+			
+			$.ajax({
+				type:"post",
+				url:"/post/comment/create",
+				data:{"postId":postId,"content":content},
+				success:function(data){
+					if(data.result == "success"){
+						location.reload();
+					}else{
+						alert("댓글쓰기 실패")
+					}
+				},error:function(){
+					alert("에러발생");
+				}
+			});
+		});
 		
 		$("#uploadBtn").on("click",function(){
 		

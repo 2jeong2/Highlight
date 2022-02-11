@@ -29,15 +29,32 @@ public class PostBO {
 	}
 
 	
-	/*public List<Post> getPostList(int userId){
+	public List<Post> getPostList(int userId){
 	 
-	List<Post> postList = postDAO.selectPostList();
-	List<PostDetail> postDetailList = new ArrayList<>();
+	return postDAO.selectPostList();
+	//List<Post> postList = postDAO.selectPostList();
+	//List<PostDetail> postDetailList = new ArrayList<>();
 	
-	
-	
-	
-	return postDetailList; 
+	/*for(Post post:postList) {
+		
+		
+		
+		 private Post post;
+		 
+		 
+		 List<Comment>commentList = commentBO Boolean isLike = int likeCount =
+		 PostDetail postDetail = new PostDetail();
+		
+		 
+		 
+		
 	}*/
+	
+	
+	
+	
+	//return postDetailList; 
+	
 	 
+	}
 }

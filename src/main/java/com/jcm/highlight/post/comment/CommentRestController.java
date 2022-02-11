@@ -7,16 +7,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.jcm.highlight.post.comment.bo.CommentBO;
 
+@RestController
+@RequestMapping("/post/comment")
 public class CommentRestController {
 	
 	
 	@Autowired
 	private CommentBO commentBO;
-	
+	@PostMapping("/create")
 	public Map<String, String> create(
 			@RequestParam("postId")int postId,
 			@RequestParam("content")String content,
@@ -29,13 +34,14 @@ public class CommentRestController {
 		Map<String, String> result = new HashMap<>();
 		
 		int count = commentBO.addComment(userId, postId, userName, content);
-		 if(count == 1) {
-			 result.put("result", "success");
+		
+		if(count == 1) {
+			result.put("result", "success");
 			 
-		 }else {
-			 result.put("result", "fail");
-		 }
-		 return result;
+		}else {
+			result.put("result", "fail");
+		}
+		return result;
 		
 	}
 

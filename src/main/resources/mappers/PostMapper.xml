@@ -30,7 +30,8 @@
 			
 			
 	</insert>	
-	<select id="getPostList" resultType="com.jcm.highlight.user.model.User" parameterType="map">
+	
+ 	<select id="selectPostList" resultType="com.jcm.highlight.post.model.Post" parameterType="map">
 		SELECT 
 			`id`,
 			`userId`,
@@ -41,12 +42,13 @@
 			`updatedAt`
 		FROM
 			`post`
-		WHERE
-			`userId` = #{userId}
+		
 		ORDER BY
 			`id` DESC
 	
 	</select>	
+	
+	
 			
 			
 </mapper>			

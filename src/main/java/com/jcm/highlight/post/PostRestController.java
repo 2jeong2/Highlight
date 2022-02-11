@@ -46,6 +46,7 @@ public class PostRestController {
 		return result;	
 			
 	}	
+	//Model 사용못함
 	
 	
 	

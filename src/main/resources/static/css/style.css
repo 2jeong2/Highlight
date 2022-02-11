@@ -49,33 +49,47 @@ header{
 	
 }
 /* timline */
-.nav{
-	font-size:18px;
-}
-.post-header{
-	width:499px;
-	height:38px;
-	background-color:#D8D8D8;
-}
-.item-box{
-	width:499px;
-	height:38px;
-	background-color:#D8D8D8;
-}
-.commentInput-box{
-	width:499px;
-	height:40px;
-	background-color:#D8D8D8;
-}
 .timeline-bar{
 	background-color:#FFFFFF;
 	border-bottom-style:solid;
 	border-width:1px;
 	border-color:#D8D8D8;
 }
+.nav{
+	font-size:18px;
+}
 .upload-box{
 	background-color:white;
 	width:500px;
+}
+.textarea{
+	border:none;
+	resize:none;
+}
+.textarea:focus{
+	outline:none;
+}
+.post-header{
+	width:499px;
+	height:45px;
+	border-bottom-style:solid;
+	border-width:1px;
+	border-color:#D8D8D8;
+}
+.item-box{
+	width:499px;
+	height:38px;
+	
+}
+.comment-box{
+	border-top-style:solid;
+	border-width:1px;
+	border-color:#D8D8D8;
+}
+.commentInput-box{
+	
+	height:40px;
+	
 }
 .post-box{
 	background-color:#FFFFFF;
@@ -83,6 +97,7 @@ header{
 	border-width:1px;
 	border-color:#D8D8D8;
 	width:500px;
+	
 }
 .img-icon{
 	font-size:25px;
