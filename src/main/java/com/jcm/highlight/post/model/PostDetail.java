@@ -24,7 +24,6 @@ public class PostDetail {
 		this.isLike = isLike;
 	}
 	
-	
 	public Post getPost() {
 		return post;
 	}

@@ -19,7 +19,12 @@ public class CommentBO {
 		return commentDAO.insertComment(postId, userId, userName, content);
 	}
 	
-	public List<Comment> getCommentList(int postId){
-		return commentDAO.selectCommentList(postId);
+	/*
+	 * public List<Comment> getCommentList(int postId){ return
+	 * commentDAO.selectCommentList(postId); }
+	 */
+	
+	public int deleteComment(int postId) {
+		return commentDAO.deleteComment(postId);
 	}
 }

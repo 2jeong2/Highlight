@@ -45,5 +45,9 @@
  		AND `userId`= #{userId}
  
  </select>
+ <delete id="deleteLikeByPost" parameterType="int">
+ DELETE FROM`post`WHERE`postId`= #{postId}
  
+ 
+ </delete>
  </mapper>

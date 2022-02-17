@@ -19,4 +19,6 @@ public interface LikeDAO {
 	public int deleteLike(@Param("postId")int postId, @Param("userId")int userId);
 	
 	
+	public int deleteLikeByPost(@Param("postId")int postId);
+	
 }

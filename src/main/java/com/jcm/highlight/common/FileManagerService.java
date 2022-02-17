@@ -12,7 +12,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class FileManagerService {
 
-	public final static String FILE_UPLOAD_PATH="C:\\Users\\eje93\\Documents\\웹개발\\DATABASE\\SpringProject\\upload/";
+	//public final static String FILE_UPLOAD_PATH="C:\\Users\\eje93\\Documents\\웹개발\\DATABASE\\SpringProject\\upload/";
+	public final static String FILE_UPLOAD_PATH="D:\\이정이\\0927\\DATABASE\\SpringProject\\upload(highlight)\\image/";
 	
 	private static Logger logger = LoggerFactory.getLogger(FileManagerService.class); 
 	//파일 저장
