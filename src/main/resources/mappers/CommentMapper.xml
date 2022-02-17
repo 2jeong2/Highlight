@@ -26,7 +26,7 @@
 	
 	</insert>
 	
-	<select id="getComment" resultType="com.jcm.highlight.post.comment.model.Comment" parameterType="map">
+	<select id="selectCommentList" parameterType="int" resultType="com.jcm.highlight.post.comment.model.Comment">
 		SELECT
 			`id`,
 			`postId`,
@@ -39,6 +39,7 @@
 			`comment`
 		WHERE
 			`postId`= #{postId}
+		
 	
 	
 	</select>

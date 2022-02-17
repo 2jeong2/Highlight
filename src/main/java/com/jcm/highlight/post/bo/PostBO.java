@@ -11,6 +11,7 @@ import com.jcm.highlight.common.FileManagerService;
 import com.jcm.highlight.post.comment.bo.CommentBO;
 import com.jcm.highlight.post.comment.model.Comment;
 import com.jcm.highlight.post.dao.PostDAO;
+import com.jcm.highlight.post.like.bo.LikeBO;
 import com.jcm.highlight.post.model.Post;
 import com.jcm.highlight.post.model.PostDetail;
 
@@ -20,6 +21,7 @@ public class PostBO {
 	@Autowired
 	private PostDAO postDAO;
 	private CommentBO commentBO;
+	private LikeBO likeBO;
 
 	public int addPost(int userId, String content, String userName, MultipartFile file) {
 
@@ -27,34 +29,42 @@ public class PostBO {
 
 		return postDAO.insertPost(userId, content, userName, filePath);
 	}
+	
+	public List<PostDetail> getPostList(int userId){
+		
+		List<Post> postList = postDAO.selectPostList();
+		
+		List<PostDetail> postDetailList = new ArrayList<>();
+		
+		for(Post post:postList) {
+			
+			List<Comment> commentList = commentBO.getCommentList(post.getId());
+			
+			int likeCount = likeBO.getLikeCount(post.getId());
+			boolean isLike = likeBO.isLike(post.getId(),userId);
+			
+			PostDetail postDetail = new PostDetail();
+			postDetail.setPost(post);
+			postDetail.setCommentList(commentList);
+			postDetail.setLikeCount(likeCount);
+			postDetail.setLike(isLike);
+			
+			postDetailList.add(postDetail);
+			
+			
+			
+			
+		}
+		
+		return postDetailList;
+	
+	}	
 
 	
-	public List<Post> getPostList(int userId){
-	 
-	return postDAO.selectPostList();
-	//List<Post> postList = postDAO.selectPostList();
-	//List<PostDetail> postDetailList = new ArrayList<>();
-	
-	/*for(Post post:postList) {
-		
-		
-		
-		 private Post post;
-		 
-		 
-		 List<Comment>commentList = commentBO Boolean isLike = int likeCount =
-		 PostDetail postDetail = new PostDetail();
-		
-		 
-		 
-		
-	}*/
 	
 	
 	
 	
-	//return postDetailList; 
 	
-	 
-	}
+	
 }

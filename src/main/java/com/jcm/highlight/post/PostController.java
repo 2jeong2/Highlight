@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jcm.highlight.post.bo.PostBO;
-import com.jcm.highlight.post.model.Post;
+import com.jcm.highlight.post.model.PostDetail;
 
 @Controller
 
@@ -24,20 +24,22 @@ public class PostController {
 	
 	
 	@GetMapping("/timeline_view")
-	public String timelineView(HttpServletRequest request,Model model) {
+	public String timelineView(Model model,HttpServletRequest request) {
 		
-		HttpSession session = request.getSession();
-		int userId = (Integer)session.getAttribute("userId");
+		/*
+		 * HttpSession session = request.getSession(); 
+		 * int userId = (Integer)session.getAttribute("userId");
+		 */
 		
+		//List<PostDetail> postList = postBO.getPostList(userId);
 		
-		List<Post> postList = postBO.getPostList(userId);
-		model.addAttribute("postList",postList);
-		
+		//model.addAttribute("postList", postList);
+	
 		
 		return "post/timelineView";
 	}
 	
-	@GetMapping("/create_view")
+	@GetMapping("/create")
 	public String createView() {
 		return "post/createView";
 	}

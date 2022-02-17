@@ -1,9 +1,12 @@
 package com.jcm.highlight.post.comment.bo;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jcm.highlight.post.comment.dao.CommentDAO;
+import com.jcm.highlight.post.comment.model.Comment;
 
 @Service
 public class CommentBO {
@@ -16,7 +19,7 @@ public class CommentBO {
 		return commentDAO.insertComment(postId, userId, userName, content);
 	}
 	
-	public String getComment(int postId, String content) {
-		return commentDAO.getComment(postId, content);
+	public List<Comment> getCommentList(int postId){
+		return commentDAO.selectCommentList(postId);
 	}
 }

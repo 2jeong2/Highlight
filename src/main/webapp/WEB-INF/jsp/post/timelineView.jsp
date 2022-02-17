@@ -62,15 +62,25 @@
 						<!-- post-header -->
 						<div class="post-header d-flex align-items-center ">
 							<div class="col-11"><a href="#" class="text-dark">${post.userName }</a></div>
-							<i class="bi bi-three-dots col-1"></i>
+							<i class="bi bi-three-dots col-1" id=""></i>
 						</div>
 						
 						<img src="${post.imagePath }" width="497" height="500">
 						
 						<div class="item-box d-flex align-items-center justify-content-between">
 							<div class="d-flex">
-								<!-- 좋아요,댓글 -->
-								<div class="like"><i class="bi bi-heart ml-2"> 좋아요</i></div>
+								<!-- 좋아요 -->
+								<c:choose>
+									<c:when test="${PostDetail.like }">
+										<!-- <a href="#" class="likeBtn" data-post-id="${postDetail.post.id }">
+											<i class="bi bi-heart ml-2"></i>
+										</a> -->
+									</c:when>
+								</c:choose>
+								<c:otherwise>
+									
+								</c:otherwise>
+								
 							</div>
 								<!-- bookmark -->
 								<div class="bookmark justify-content-end mr-3"><i class="bi bi-bookmark"></i></div>
@@ -83,10 +93,10 @@
 								<div class="comment"><i class="bi bi-chat"></i></div>
 								<!-- 게시된 comment -->
 								<div class="comment my-2">
-									<div>1</div>
-									<div>1</div>
-									<div>1</div>
-									<div>1</div>
+								<c:forEach var="comment" items="${postDetail.commentList }">
+									<div>${comment.userName }${comment.content }</div>
+									
+								</c:forEach>
 								</div>
 								
 								<!-- 댓글 입력-->
@@ -109,10 +119,28 @@
 			
 		
 	
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-body text-center">
+        삭제하기
+      </div>
+      
+    </div>
+  </div>
+</div>
 	
 	<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 
 </div>
+
 
 <script>
 	$(document).ready(function(){
@@ -122,6 +150,21 @@
 			$("#fileInput").click();
 		}); 
 		
+<!--		$(".likeBtn").on("click",function(e){
+			e.preventDefault();
+			
+			let postId = $(this).data("post-id");
+			
+			
+			$.ajax({
+				type:
+				url:
+				data:
+				success:function(data){
+					if(data result == "sucess")
+				}
+			})
+		})-->
 		$(".commentBtn").on("click",function(){
 			
 			let postId = $(this).data("post-id");
@@ -191,6 +234,8 @@
 			
 			
 		});
+		
+		
 		
 		
 	});

@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import com.jcm.highlight.post.model.Post;
 
+
+
 @Repository
 public interface PostDAO {
 
@@ -16,9 +18,9 @@ public interface PostDAO {
 			@Param("userName")String userName,
 			@Param("imagePath")String imagePath);
 			
+	
 	public List<Post> selectPostList();
 	
-	public Post selectPost(@Param("id")int id);
 	
 	
 }

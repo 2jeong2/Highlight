@@ -31,9 +31,9 @@ public class CommentRestController {
 		int userId = (Integer)session.getAttribute("userId");
 		String userName =  (String)session.getAttribute("userName");
 		
-		Map<String, String> result = new HashMap<>();
 		
-		int count = commentBO.addComment(userId, postId, userName, content);
+		int count = commentBO.addComment(postId, userId,  userName, content);
+		Map<String, String> result = new HashMap<>();
 		
 		if(count == 1) {
 			result.put("result", "success");

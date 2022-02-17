@@ -44,7 +44,7 @@
 						<ul class="nav nav-fill text-end ">
 							<li class="nav-item"><a href="/post/timeline_view" class="nav-link text-dark"><i class="bi bi-house-door"></i></a></li>
 							
-							<li class="nav-item"><a href="/post/create_view" class="nav-link text-dark"><i class="bi bi-plus-square"></i></a></li>
+							<li class="nav-item"><a href="/post/create" class="nav-link text-dark"><i class="bi bi-plus-square"></i></a></li>
 							<li class="nav-item"><a href="#" class="nav-link text-dark"><i class="bi bi-heart"></i></a></li>
 							<li class="nav-item"><a href="#" class="nav-link text-dark"><i class="bi bi-person-circle"></i></a></li>
 						</ul>
