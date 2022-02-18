@@ -11,20 +11,19 @@ import com.jcm.highlight.post.comment.model.Comment;
 @Service
 public class CommentBO {
 
-	
 	@Autowired
-	private CommentDAO commentDAO;
+	CommentDAO commentDAO;
 	
-	public int addComment(int postId, int userId, String userName, String content) {
+	public int addComment(int postId,int userId, String userName, String content) {
 		return commentDAO.insertComment(postId, userId, userName, content);
 	}
 	
-	/*
-	 * public List<Comment> getCommentList(int postId){ return
-	 * commentDAO.selectCommentList(postId); }
-	 */
-	
-	public int deleteComment(int postId) {
-		return commentDAO.deleteComment(postId);
-	}
+	// postId로 댓글 리스트 가져오기  
+		public List<Comment> getCommentList(int postId) {
+			return commentDAO.selectCommentList(postId);
+		}
+		
+		public int deleteComment(int postId) {
+			return commentDAO.deleteComment(postId);
+		}
 }

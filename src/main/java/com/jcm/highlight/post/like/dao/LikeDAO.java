@@ -7,18 +7,19 @@ import org.springframework.stereotype.Repository;
 public interface LikeDAO {
 
 	public int insertLike(
-			@Param("postId")int postId,
-			@Param("userId")int userId);
+			@Param("postId") int postId, 
+			@Param("userId") int userId);
 	
-	public int selectLikeCount(@Param("postId")int postId);
+	public int deleteLike(
+			@Param("postId") int postId,
+			@Param("userId") int userId);
+	
+	public int selectLikeCount(@Param("postId") int postId);
 	
 	public int selectLikeCountByUserId(
-			@Param("postId")int postId,
-			@Param("userId")int userId);
+			@Param("postId") int postId,
+			@Param("userId") int userId);
 	
-	public int deleteLike(@Param("postId")int postId, @Param("userId")int userId);
-	
-	
-	public int deleteLikeByPost(@Param("postId")int postId);
-	
+	public int deleteLikeByPost(
+			@Param("postId") int postId);
 }

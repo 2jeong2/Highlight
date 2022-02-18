@@ -3,7 +3,7 @@ package com.jcm.highlight.post.comment.model;
 import java.util.Date;
 
 public class Comment {
-	
+
 	private int id;
 	private int postId;
 	private int userId;
@@ -54,7 +54,4 @@ public class Comment {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	
-	
-
 }

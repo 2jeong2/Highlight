@@ -17,32 +17,28 @@ import com.jcm.highlight.post.comment.bo.CommentBO;
 @RestController
 @RequestMapping("/post/comment")
 public class CommentRestController {
-	
-	
+
 	@Autowired
-	private CommentBO commentBO;
-	@PostMapping("/create")
-	public Map<String, String> create(
+	CommentBO commentBO;
+	@PostMapping("/timeline_create")
+	public Map<String,String> timelineCreate(
 			@RequestParam("postId")int postId,
 			@RequestParam("content")String content,
-			HttpServletRequest request
-			){
+			HttpServletRequest request ){
+		
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
-		String userName =  (String)session.getAttribute("userName");
+		String userName = (String)session.getAttribute("userName");
 		
-		
-		int count = commentBO.addComment(postId, userId,  userName, content);
+		int count = commentBO.addComment(postId, userId, userName, content);
 		Map<String, String> result = new HashMap<>();
-		
 		if(count == 1) {
 			result.put("result", "success");
-			 
-		}else {
+		} else {
 			result.put("result", "fail");
 		}
+		
 		return result;
 		
 	}
-
 }

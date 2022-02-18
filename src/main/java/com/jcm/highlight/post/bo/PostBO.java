@@ -22,6 +22,7 @@ public class PostBO {
 	private PostDAO postDAO;
 	private CommentBO commentBO;
 	private LikeBO likeBO;
+	
 
 	public int addPost(int userId, String content, String userName, MultipartFile file) {
 
@@ -30,34 +31,34 @@ public class PostBO {
 		return postDAO.insertPost(userId, content, userName, filePath);
 	}
 	
-	public List<Post> getPostList(int userId){
+	public List<PostDetail> getPostList(int userId){
 		
 		List<Post> postList = postDAO.selectPostList();
 		
-		/*
-		 * List<PostDetail> postDetailList = new ArrayList<>();
-		 * 
-		 * for(Post post:postList) {
-		 * 
-		 * List<Comment> commentList = commentBO.getCommentList(post.getId());
-		 * 
-		 * int likeCount = likeBO.getLikeCount(post.getId()); boolean isLike =
-		 * likeBO.isLike(post.getId(),userId);
-		 * 
-		 * PostDetail postDetail = new PostDetail(); postDetail.setPost(post);
-		 * postDetail.setCommentList(commentList); postDetail.setLikeCount(likeCount);
-		 * postDetail.setLike(isLike);
-		 * 
-		 * postDetailList.add(postDetail);
-		 * 
-		 * 
-		 * 
-		 * 
-		 * }
-		 */
-		//return postDetailList;
+		List<PostDetail> postDetailList = new ArrayList<>();
+		
+		
+		
+		  
+		for(Post post:postList) {
+			// 해당하는 post id로 댓글 가져오기 
+			List<Comment> commentList = commentBO.getCommentList(post.getId());
+			
+			int likeCount = likeBO.getLikeCount(post.getId());
+			boolean isLike = likeBO.isLike(post.getId(), userId);
+			
+			PostDetail postDetail = new PostDetail();
+			postDetail.setPost(post);
+			postDetail.setCommentList(commentList);
+			postDetail.setLikeCount(likeCount);
+			postDetail.setLike(isLike);
+			
+			postDetailList.add(postDetail);
+		}
+		
+		return postDetailList;
 	
-		return postDAO.selectPostList();
+		//return postDAO.selectPostList();
 	}	
 	
 	public int deletePost(int postId,int userId) {
@@ -74,7 +75,7 @@ public class PostBO {
 		
 		//파일 삭제
 		//Post post = postDAO.selectPost(postId);
-		//FileManagerService.removeFile(post.getImagePath());
+		FileManagerService.removeFile(post.getImagePath());
 		//포스트 삭제
 		return postDAO.deletePost(postId);
 	}

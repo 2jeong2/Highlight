@@ -10,7 +10,7 @@ public class Post {
 	private String content;
 	private String imagePath;
 	private Date createdAt;
-	
+	private Date updatedAt;
 	public int getId() {
 		return id;
 	}
@@ -53,5 +53,4 @@ public class Post {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	private Date updatedAt;
 }

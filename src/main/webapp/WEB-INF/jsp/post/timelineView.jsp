@@ -43,7 +43,7 @@
 					<div class="d-flex justify-content-between p-2 ">
 						
 						<span class="img-icon"><i class="bi bi-images" id="imgBtn"></i></span>
-						<input type="file" class="mt-3 " id="fileInput">
+						<input type="file" class="mt-3 d-none" id="fileInput">
 						
 						<button type="button" class="btn btn-sm btn-info text-white" id="uploadBtn">업로드</button>
 					</div>
@@ -61,23 +61,38 @@
 				
 						<!-- post-header -->
 						<div class="post-header d-flex align-items-center ">
-							<div class="col-11"><a href="#" class="text-dark">${postDetail.userName}</a></div>
+							<div class="col-11"><a href="#" class="text-dark">${postDetail.post.userName}</a></div>
 							
+							<!-- 더보기 -->
 							<div class="more-icon">
-								<a class="text-dark moreBtn" data-post-id="${postDetail.id }" href="#"><i class="bi bi-three-dots col-1" id=""></i></a>
+								<a class="text-dark moreBtn" data-post-id="${postDetail.post.id }" href="#" data-toggle="modal" data-target="#exampleModalCenter"><i class="bi bi-three-dots col-1" id=""></i></a>
 								
 							</div>
 						</div>
 						
-						<img src="${postDetail.imagePath }" width="497" height="500">
+						<img src="${postDetail.post.imagePath }" width="497" height="500" class="imageClick">
 						
 						<div class="item-box d-flex align-items-center justify-content-between">
 							<div class="d-flex">
 								<!-- 좋아요 -->
 								
-										<a href="#" class="likeBtn" data-post-id="${post.id }">
-											<i class="bi bi-heart ml-2"></i>
+										<a href="#" class="likeBtn" data-post-id="${postDetail.post.id }">
+											
+											
+											<c:choose>
+												<c:when test="${postDetail.like }">
+													
+														<i class="bi bi-heart-fill heart-icon text-danger"></i>
+													
+												</c:when>
+												<c:otherwise>
+													
+														<i class="bi bi-heart heart-icon text-dark"></i>
+														
+												</c:otherwise>
+											</c:choose>
 										</a> 
+										<span class="middle-size ml-1"> 좋아요 ${postDetail.likeCount }개 </span>
 									
 								
 							</div>
@@ -85,20 +100,30 @@
 								<div class="bookmark justify-content-end mr-3"><i class="bi bi-bookmark"></i></div>
 							
 							</div>
+							
+							<!-- content -->
 							<div class="p-2">
-								<div class="post-content">${postDetail.userName } ${postDetail.content }</div>
+								<div class="post-content">${postDetail.post.userName } ${postDetail.post.content }</div>
 							</div>
+							
+							
+							
 						<div class="comment-box p-2">
 								<div class="comment"><i class="bi bi-chat"></i></div>
-								<!-- 게시된 comment -->
+								
+								<!-- 게시된 댓글 -->
 								<div class="comment my-2">
-							
+									<c:forEach var="comment" items="${postDetail.commentList }">
+										<div class="mt-1">
+											<b>${comment.userName }</b> ${comment.content }
+										</div>
+									</c:forEach>
 								</div>
 								
 								<!-- 댓글 입력-->
 								<div class="commentInput-box d-flex">
-									<input type="text" class="form-control" id="commentInput${postDetail.id}">
-									<button type="button" class="commentBtn btn" data-post-id="${postDetail.id }">게시</button><!-- data-post-id 여기 대문자 숫자x-->
+									<input type="text" class="form-control" id="commentInput${postDetail.post.id}">
+									<button type="button" class="commentBtn btn" data-post-id="${postDetail.post.id }">게시</button><!-- data-post-id 여기 대문자 숫자x-->
 								</div>
 						</div>
 					</div>
@@ -144,103 +169,45 @@
 		}); 
 		
 		$("#uploadBtn").on("click",function(){
-		
-			
-			let content = $("#contentInput").val().trim();
-			
-			
-			if(content == ""){
-				alert("내용을 입력해주세요");
-				return;
-			}
-			//파일 유효성 검사
-			if($("#fileInput")[0].files.length == 0){
-				alert("사진을 선택해주세요");
-				return;
-			}
-			
-			var formData = new FormData();
-			formData.append("content",content);
-			formData.append("file",$("#fileInput")[0].files[0]);
-			
-			$.ajax({
-				type:"post",
-				url:"/post/timeline",
-				data:formData,
-				encType:"multipart/form-data",
-				processData:false,
-				contentType:false,
-				success:function(data){
-					if(data.result == "success"){
-						location.reload();
-					}else{
-						alert("글쓰기 실패");
-					}
-				},error:function(){
-					alert("에러발생");
-				}
 				
-			});
-			
-			
-			
-		});
-		$(".likeBtn").on("click",function(e){
-			e.preventDefault();
-			
-			let postId = $(this).data("post-id");
-			
-			
-			$.ajax({
-				type:"get",
-				url:"/post/favorite",
-				data:{"postId":postId},
-				success:function(data){
 					
-						location.reload();
+					let content = $("#contentInput").val().trim();
 					
-				},error:function(){
-					alert("좋아요 에러");
-				}
-			});
-		});
-		
-		$(".moreBtn").on("click",function(e){
-			e.preventDefault();
-
-			let postId = $(this).data("post-id");
-			
-			//postId를 모달의 삭제하기 버튼에 값을 부여한다.
-			//moreBtn을 누르는 순간 post-id부여
-			$("#deleteBtn").data("post-id",postId);
-			
-			
-			
-			
-		});
-		$("#deleteBtn").on("click",function(e){
-			e.preventDefault();
-			
-			let postId = $(this).data("post-id");
-			alert(postId);
-			
-			
-			$.ajax({
-				type:"get",
-				url:"/post/delete",
-				data:{"postId":postId},
-				success:fuction(data){
-					if(data.result == "success"){
-						location.reload();
-					}else{
-						alert("삭제 실패");
+					
+					if(content == ""){
+						alert("내용을 입력해주세요");
+						return;
 					}
-				},error:function(){
-					alert("삭제 에러")
-				}
-				
-			});
-		});
+					//파일 유효성 검사
+					if($("#fileInput")[0].files.length == 0){
+						alert("사진을 선택해주세요");
+						return;
+					}
+					
+					var formData = new FormData();
+					formData.append("content",content);
+					formData.append("file",$("#fileInput")[0].files[0]);
+					
+					$.ajax({
+						type:"post",
+						url:"/post/timeline",
+						data:formData,
+						encType:"multipart/form-data",
+						processData:false,
+						contentType:false,
+						success:function(data){
+							if(data.result == "success"){
+								location.reload();
+							}else{
+								alert("글쓰기 실패");
+							}
+						},error:function(){
+							alert("에러발생");
+						}
+						
+					});
+					
+				});
 		$(".commentBtn").on("click",function(){
 			
 			let postId = $(this).data("post-id");
@@ -267,10 +234,23 @@
 				}
 			});
 		});
+		$(".moreBtn").on("click",function(e){
+			e.preventDefault();
+
+			let postId = $(this).data("post-id");
+			
+			//postId를 모달의 삭제하기 버튼에 값을 부여한다.
+			//moreBtn을 누르는 순간 post-id부여
+			$("#deleteBtn").data("post-id",postId);
+			
+			
+			
+			
+		});
 		
-		
-		
-		
+
+
+
 		
 	});
 	
