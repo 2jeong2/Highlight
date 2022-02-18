@@ -45,9 +45,9 @@
 	</select>
 	<delete id="deleteComment" parameterType="int">
 	DELETE FROM 
-		`comment
-	`WHERE 
-		`postId`=#{postId}
+		`comment`
+	WHERE 
+		`postId` = #{postId}
 	
 	
 	

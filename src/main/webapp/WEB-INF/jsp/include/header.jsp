@@ -22,52 +22,53 @@
 	<div class="timeline-bar d-flex align-items-center">
 		
 		<!-- Logo -->
-		<div class="logo  justify-content-start">
+		<div class="logo  justify-content-start ">
 			<h4 class="d-flex  ml-3 my-3"><b>Highlight.</b></h4>
 		</div>
 		
 		<!-- 검색창 -->
 		<form id="searchForm" class="">
-			<div class=" search text-center">
+			<div class=" search d-flex justify-content-center">
 				<input type="text">
 				<button type="button" class="btn btn-sm" id="searchInput">검색</button>
 			</div>
 		</form>
 		
 		<!-- Nav -->
-		<div class="nav  justify-content-end ">
-		
-			<c:choose>
-				<c:when test="${not empty userId }">
-					<!-- 로그인을 하지 않았을 때 사라져야하는 항목 -->
-					<div class="d-flex align-items-center">
-						<ul class="nav nav-fill text-end ">
-							<li class="nav-item"><a href="/post/timeline_view" class="nav-link text-dark"><i class="bi bi-house-door"></i></a></li>
-							
-							<li class="nav-item"><a href="/post/create" class="nav-link text-dark"><i class="bi bi-plus-square"></i></a></li>
-							<li class="nav-item"><a href="#" class="nav-link text-dark"><i class="bi bi-heart"></i></a></li>
-							<li class="nav-item"><a href="#" class="nav-link text-dark"><i class="bi bi-person-circle"></i></a></li>
-						</ul>
-						<div class="text-right mr-3 d-none">
-							<c:choose>
-								<c:when test="${not empty userId }">
-									<div class="mr-3">${userName }님<a href="/user/sign_out">로그아웃</a></div>
-								</c:when>
-								<c:otherwise>
-									<div class="mr-3"><a href="/user/signin_view">로그인</a></div>
-								</c:otherwise>
-							</c:choose>
+		<div class="nav  ">
+			<div class="">
+				<c:choose>
+					<c:when test="${not empty userId }">
+						<!-- 로그인을 하지 않았을 때 사라져야하는 항목 -->
+						<div class="d-flex  align-items-center">
+							<ul class="nav nav-fill text-end ">
+								<li class="nav-item"><a href="/post/timeline_view" class="nav-link text-dark"><i class="bi bi-house-door"></i></a></li>
+								
+								<li class="nav-item"><a href="/post/create" class="nav-link text-dark"><i class="bi bi-plus-square"></i></a></li>
+								<li class="nav-item"><a href="#" class="nav-link text-dark"><i class="bi bi-heart"></i></a></li>
+								<li class="nav-item"><a href="/post/mypage_view" class="nav-link text-dark"><i class="bi bi-person-circle"></i></a></li>
+							</ul>
+							<div class="text-right mr-3 d-none">
+								<c:choose>
+									<c:when test="${not empty userId }">
+										<div class="mr-3">${userName }님<a href="/user/sign_out">로그아웃</a></div>
+									</c:when>
+									<c:otherwise>
+										<div class="mr-3"><a href="/user/signin_view">로그인</a></div>
+									</c:otherwise>
+								</c:choose>
+							</div>
 						</div>
-					</div>
-				</c:when>
-				<c:otherwise>
-					<!-- 로그인을 했을 때 사라져야할 항목 -->
-					<div class="d-flex ">
-						<a href="/user/signin_view" type="button" class="form-control btn btn-info" >로그인</a>
-						<a href="/user/signup_view" type="button" class="form-control btn btn-white" >회원가입</a>
-					</div>
-				</c:otherwise>
-			</c:choose>
+					</c:when>
+					<c:otherwise>
+						<!-- 로그인을 했을 때 사라져야할 항목 -->
+						<div class="d-flex ">
+							<a href="/user/signin_view" type="button" class="form-control btn btn-info" >로그인</a>
+							<a href="/user/signup_view" type="button" class="form-control btn btn-white" >회원가입</a>
+						</div>
+					</c:otherwise>
+				</c:choose>
+			</div>
 		</div>
 		
 	</div>

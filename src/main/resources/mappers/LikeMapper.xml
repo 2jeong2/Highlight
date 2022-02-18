@@ -45,8 +45,19 @@
  		AND `userId`= #{userId}
  
  </select>
+ <delete id="deleteLike">
+ DELETE FROM `favorite`
+ WHERE
+ 	`postId` = #{postId} 
+ 	AND `userId` = #{userId}
+ 
+ 
+ </delete>
  <delete id="deleteLikeByPost" parameterType="int">
- DELETE FROM`post`WHERE`postId`= #{postId}
+ DELETE FROM
+ 	`favorite`
+ WHERE
+ 	`postId`= #{postId}
  
  
  </delete>

@@ -50,13 +50,16 @@ public class PostRestController {
 	//Model 사용못함
 	
 	@GetMapping("/delete")
-	public Map<String,String> delete(@RequestParam ("postId")int postId,HttpServletRequest request){
+	public Map<String,String> delete(@RequestParam ("postId")int postId,
+			HttpServletRequest request){
 		
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
+		
+		int count =  postBO.deletePost(postId,userId);
+		
 		Map<String,String>  result = new HashMap<>();
 
-		int count =  postBO.deletePost(postId,userId);
 		if(count == 1) {
 			result.put("result", "success");
 		}else {

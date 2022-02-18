@@ -78,8 +78,8 @@ public class PostBO {
 		commentBO.deleteComment(postId);
 		
 		//파일 삭제
-		//Post post = postDAO.selectPost(postId);
 		FileManagerService.removeFile(post.getImagePath());
+		
 		//포스트 삭제
 		return postDAO.deletePost(postId);
 	}

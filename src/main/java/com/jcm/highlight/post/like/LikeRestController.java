@@ -19,7 +19,7 @@ public class LikeRestController {
 	@Autowired
 	private LikeBO likeBO;
 	
-	@GetMapping("/post/like")
+	@GetMapping("/post/favorite")
 	public Map<String, Boolean> like(
 			@RequestParam("postId") int postId,
 			HttpServletRequest request) {

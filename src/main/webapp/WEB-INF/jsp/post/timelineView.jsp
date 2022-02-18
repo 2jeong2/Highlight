@@ -76,7 +76,7 @@
 							<div class="d-flex">
 								<!-- 좋아요 -->
 								
-										<a href="#" class="likeBtn" data-post-id="${postDetail.post.id }">
+										<a href="#" class="likeBtn ml-2" data-post-id="${postDetail.post.id }">
 											
 											
 											<c:choose>
@@ -234,20 +234,6 @@
 				}
 			});
 		});
-		$(".moreBtn").on("click",function(e){
-			e.preventDefault();
-
-			let postId = $(this).data("post-id");
-			
-			//postId를 모달의 삭제하기 버튼에 값을 부여한다.
-			//moreBtn을 누르는 순간 post-id부여
-			$("#deleteBtn").data("post-id",postId);
-			
-			
-			
-			
-		});
-		
 		$(".likeBtn").on("click",function(e){
 			e.preventDefault();
 			
@@ -265,6 +251,44 @@
 				},error:function(){
 					alert("좋아요 에러");
 				}
+			});
+		});
+		
+		$(".moreBtn").on("click",function(e){
+			e.preventDefault();
+
+			let postId = $(this).data("post-id");
+			
+			//postId를 모달의 삭제하기 버튼에 값을 부여한다.
+			//moreBtn을 누르는 순간 post-id부여
+			$("#deleteBtn").data("post-id",postId);
+			
+			
+			
+			
+		});
+		
+		$("#deleteBtn").on("click",function(e){
+			e. preventDefault();
+			
+			let postId = $(this).data("post-id");
+			alert(postId);
+			
+			$.ajax({
+				type:"get",
+				url:"/post/delete",
+				data:{"postId":postId},
+				success:function(data) {
+					if(data.result == "success") {
+						location.reload();
+					} else {
+						alert("삭제 실패!");
+					}
+					
+				}, error:function() {
+					alert("삭제 에러!!")
+				}
+				
 			});
 		});
 
