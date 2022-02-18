@@ -162,7 +162,7 @@
 
 <script>
 	$(document).ready(function(){
-		alert("");
+		//alert("");
 		$("#imgBtn").on("click", function() {
 			//fileInput 클릭 효과
 			$("#fileInput").click();
@@ -248,6 +248,26 @@
 			
 		});
 		
+		$(".likeBtn").on("click",function(e){
+			e.preventDefault();
+			
+			let postId = $(this).data("post-id");
+			
+			
+			$.ajax({
+				type:"get",
+				url:"/post/favorite",
+				data:{"postId":postId},
+				success:function(data){
+					
+						location.reload();
+					
+				},error:function(){
+					alert("좋아요 에러");
+				}
+			});
+		});
+
 
 
 

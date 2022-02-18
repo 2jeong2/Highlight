@@ -12,7 +12,7 @@ import com.jcm.highlight.post.comment.model.Comment;
 public class CommentBO {
 
 	@Autowired
-	CommentDAO commentDAO;
+	private CommentDAO commentDAO;
 	
 	public int addComment(int postId,int userId, String userName, String content) {
 		return commentDAO.insertComment(postId, userId, userName, content);

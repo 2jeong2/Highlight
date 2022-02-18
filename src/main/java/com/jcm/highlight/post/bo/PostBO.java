@@ -20,7 +20,11 @@ public class PostBO {
 
 	@Autowired
 	private PostDAO postDAO;
+	
+	@Autowired
 	private CommentBO commentBO;
+	
+	@Autowired
 	private LikeBO likeBO;
 	
 

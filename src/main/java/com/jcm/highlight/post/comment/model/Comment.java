@@ -11,7 +11,6 @@ public class Comment {
 	private String content;
 	private Date createdAt;
 	private Date updatedAt;
-	
 	public int getId() {
 		return id;
 	}
@@ -54,4 +53,6 @@ public class Comment {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+	
+	
 }

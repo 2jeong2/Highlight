@@ -20,7 +20,7 @@ public class CommentRestController {
 
 	@Autowired
 	CommentBO commentBO;
-	@PostMapping("/timeline_create")
+	@PostMapping("/create")
 	public Map<String,String> timelineCreate(
 			@RequestParam("postId")int postId,
 			@RequestParam("content")String content,
